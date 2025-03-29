@@ -1,32 +1,35 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import { ImPointRight } from "react-icons/im";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 function AboutCard() {
+  const { t } = useLanguage();
+  
   return (
     <Card className="quote-card-view">
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            Hi Everyone, I am <span className="purple">Nguyen Huu Tai </span>
-            from <span className="purple">Vietnam.</span>
+            {t("greeting")} <span className="purple">{t("name")} </span>
+            {t("from")} <span className="purple">{t("country")}</span>
             <br />
-            Currently, I am seeking a suitable position that aligns with my skills and aspirations.
+            {t("seekingPosition")}
             <br />
-            I have graduated with a Bachelor's degree in Information Technology from Ho Chi Minh City University of Transport.
+            {t("education")}
             <br />
             <br />
-            Apart from coding, here are some other activities that I enjoy:
+            {t("otherActivities")}
           </p>
           <ul>
             <li className="about-activity">
-              <ImPointRight /> Playing Games
+              <ImPointRight /> {t("playingGames")}
             </li>
             <li className="about-activity">
-              <ImPointRight /> Listening to Music
+              <ImPointRight /> {t("listeningToMusic")}
             </li>
             <li className="about-activity">
-              <ImPointRight /> Reading Books
+              <ImPointRight /> {t("readingBooks")}
             </li>
           </ul>
         </blockquote>

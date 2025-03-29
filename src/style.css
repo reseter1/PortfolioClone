@@ -656,14 +656,14 @@ button:focus {
   -webkit-text-fill-color: transparent;
   animation: gradient-shift 6s ease infinite;
   text-shadow: 0 0 5px rgba(199, 112, 240, 0.3);
-  transition: all 0.3s ease;
+  transition: none;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
 }
 
 .footer h3:hover {
-  transform: scale(1.05);
-  letter-spacing: 1px;
+  transform: none;
+  letter-spacing: 0 !important;
 }
 
 .footer-icons {
@@ -674,6 +674,52 @@ button:focus {
 
 .blockquote-footer {
   color: #a588c0 !important;
+}
+
+/* Styling cho link portfolio trong footer */
+.portfolio-link {
+  color: #c770f0;
+  text-decoration: none;
+  position: relative;
+  font-weight: 600;
+  transition: none;
+  background: var(--primary-gradient);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 4s ease infinite;
+  letter-spacing: 0 !important;
+}
+
+.portfolio-link:hover {
+  transform: none;
+  letter-spacing: 0 !important;
+}
+
+/* Thêm selector mới để ngăn chặn hiệu ứng giãn chữ trên portfolio-link */
+.footer-body h3:hover .portfolio-link,
+.footer-body h3 .portfolio-link:hover,
+.footer h3:hover,
+.footer h3:hover *,
+.footer .portfolio-link,
+.footer .portfolio-link:hover {
+  letter-spacing: 0 !important;
+  transform: none !important;
+}
+
+.portfolio-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(45deg, #c770f0, #7b68ee);
+  transition: width 0.3s ease;
+}
+
+.portfolio-link:hover::after {
+  width: 100%;
 }
 
 /* --------- */
@@ -1393,5 +1439,27 @@ button:focus {
 
   100% {
     transform: translateX(500%);
+  }
+}
+
+.language-btn {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.language-btn span {
+  margin-left: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .language-btn {
+    margin-top: 10px;
+    margin-left: 0;
   }
 }

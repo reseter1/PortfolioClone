@@ -5,8 +5,11 @@ import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
 import Animate from "../Animate";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 function Home() {
+  const { t } = useLanguage();
+
   return (
     <section>
       <Container fluid className="home-section" id="home">
@@ -16,7 +19,7 @@ function Home() {
             <Col md={7} className="home-header">
               <Animate animation="slide-right" delay={0.2}>
                 <h1 style={{ paddingBottom: 15 }} className="heading">
-                  Hi There!{" "}
+                  {t("hiThere")}{" "}
                   <span className="wave" role="img" aria-labelledby="wave">
                     👋🏻
                   </span>
@@ -25,7 +28,7 @@ function Home() {
 
               <Animate animation="slide-right" delay={0.4}>
                 <h1 className="heading-name">
-                  I'M
+                  {t("im")}
                   <strong className="main-name"> Reseter</strong>
                 </h1>
               </Animate>

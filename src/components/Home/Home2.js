@@ -7,8 +7,11 @@ import {
   AiFillFacebook,
 } from "react-icons/ai";
 import Animate from "../Animate";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 function Home2() {
+  const { t } = useLanguage();
+
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
@@ -16,23 +19,23 @@ function Home2() {
           <Col md={8} className="home-about-description">
             <Animate animation="slide-up" delay={0.2}>
               <h1 style={{ fontSize: "2.6em" }}>
-                LET ME <span className="purple"> INTRODUCE </span> MYSELF
+                {t("introduce")}
               </h1>
             </Animate>
             <Animate animation="fade-in" delay={0.4}>
               <p className="home-about-body">
-                <b>Bachelor of Information Technology</b> graduated in 2024
+                {t("graduationInfo")}
                 <br />
-                <br />I am proficient in programming languages such as
+                <br />{t("proficientIn")}
                 <i>
                   <b className="purple"> C#, Javascript, Python </b>
                 </i>
                 <br />
                 <br />
-                <b className="purple">Expertise:</b> Full-stack web development with experience in React, Node.js and ASP.NET
+                <b className="purple">{t("expertise")}</b> {t("expertiseDesc")}
                 <br />
                 <br />
-                <b className="purple">Objective:</b> Seeking a suitable position to develop skills and contribute value to the company
+                <b className="purple">{t("objective")}</b> {t("objectiveDesc")}
               </p>
             </Animate>
           </Col>
@@ -58,9 +61,9 @@ function Home2() {
         <Row>
           <Col md={12} className="home-about-social">
             <Animate animation="slide-up" delay={0.6}>
-              <h1>FIND ME ON</h1>
+              <h1>{t("findMeOn")}</h1>
               <p>
-                Feel free to <span className="purple">connect </span>with me
+                {t("connectWithMe")}
               </p>
               <ul className="home-about-social-links">
                 <li className="social-icons">

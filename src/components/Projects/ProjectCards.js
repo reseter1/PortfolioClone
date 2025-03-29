@@ -3,8 +3,11 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 function ProjectCards(props) {
+  const { t } = useLanguage();
+  
   return (
     <Card className="project-card-view">
       <Card.Img variant="top" src={props.imgPath} alt="card-img" />
@@ -24,7 +27,7 @@ function ProjectCards(props) {
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Button variant="primary" href={props.ghLink} target="_blank">
             <BsGithub /> &nbsp;
-            {props.isBlog ? "Blog" : "GitHub"}
+            {props.isBlog ? "Blog" : t("github")}
           </Button>
           {"\n"}
           {"\n"}
@@ -39,7 +42,7 @@ function ProjectCards(props) {
               style={{ marginLeft: "10px" }}
             >
               <CgWebsite /> &nbsp;
-              {"Demo"}
+              {t("demo")}
             </Button>
           )}
         </div>

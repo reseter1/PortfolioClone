@@ -13,13 +13,15 @@ import {
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
 } from "react-icons/ai";
-
+import { MdLanguage } from "react-icons/md";
 import { CgFileDocument } from "react-icons/cg";
+import { useLanguage } from "../contexts/LanguageContext";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
   const audioRef = useRef(null);
+  const { t, toggleLanguage, language } = useLanguage();
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -75,7 +77,7 @@ function NavBar() {
                     updateExpanded(false);
                   }}
                 >
-                  <AiOutlineHome style={{ marginBottom: "2px" }} /> Home
+                  <AiOutlineHome style={{ marginBottom: "2px" }} /> {t("home")}
                 </Nav.Link>
               </Nav.Item>
 
@@ -88,7 +90,7 @@ function NavBar() {
                     updateExpanded(false);
                   }}
                 >
-                  <AiOutlineUser style={{ marginBottom: "2px" }} /> About
+                  <AiOutlineUser style={{ marginBottom: "2px" }} /> {t("about")}
                 </Nav.Link>
               </Nav.Item>
 
@@ -104,7 +106,7 @@ function NavBar() {
                   <AiOutlineFundProjectionScreen
                     style={{ marginBottom: "2px" }}
                   />{" "}
-                  Projects
+                  {t("projects")}
                 </Nav.Link>
               </Nav.Item>
 
@@ -117,7 +119,7 @@ function NavBar() {
                     updateExpanded(false);
                   }}
                 >
-                  <CgFileDocument style={{ marginBottom: "2px" }} /> Resume
+                  <CgFileDocument style={{ marginBottom: "2px" }} /> {t("resume")}
                 </Nav.Link>
               </Nav.Item>
 
@@ -126,11 +128,11 @@ function NavBar() {
                   onClick={(e) => {
                     e.preventDefault();
                     playSound();
-                    alert("Coming Soon!");
+                    alert(t("comingSoon"));
                   }}
                   style={{ cursor: "pointer" }}
                 >
-                  <ImBlog style={{ marginBottom: "2px" }} /> Blogs
+                  <ImBlog style={{ marginBottom: "2px" }} /> {t("blogs")}
                 </Nav.Link>
               </Nav.Item>
 
@@ -143,6 +145,19 @@ function NavBar() {
                 >
                   <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
                   <AiFillStar style={{ fontSize: "1.1em" }} />
+                </Button>
+              </Nav.Item>
+
+              <Nav.Item className="fork-btn">
+                <Button
+                  className="fork-btn-inner language-btn"
+                  onClick={() => {
+                    playSound();
+                    toggleLanguage();
+                  }}
+                >
+                  <MdLanguage style={{ fontSize: "1.2em" }} />{" "}
+                  <span>{language === "en" ? "VI" : "EN"}</span>
                 </Button>
               </Nav.Item>
             </Nav>

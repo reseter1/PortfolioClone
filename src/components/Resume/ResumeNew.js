@@ -6,9 +6,11 @@ import pdf from "../../Assets/../Assets/nguyenhuutai.cv.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import { useLanguage } from "../../contexts/LanguageContext";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
+  const { t } = useLanguage();
   const [width, setWidth] = useState(1200);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
@@ -35,7 +37,7 @@ function ResumeNew() {
             style={{ maxWidth: "250px" }}
           >
             <AiOutlineDownload />
-            &nbsp;Download CV
+            &nbsp;{t("downloadCV")}
           </Button>
         </Row>
 
@@ -48,7 +50,7 @@ function ResumeNew() {
                 <div></div>
                 <div></div>
               </div>
-              <p>CV loading...</p>
+              <p>{t("cvLoading")}</p>
             </div>
           ) : null}
           <Document
@@ -63,7 +65,7 @@ function ResumeNew() {
                   <div></div>
                   <div></div>
                 </div>
-                <p>CV loading...</p>
+                <p>{t("cvLoading")}</p>
               </div>
             }
           >
@@ -84,7 +86,7 @@ function ResumeNew() {
             style={{ maxWidth: "250px" }}
           >
             <AiOutlineDownload />
-            &nbsp;Download CV
+            &nbsp;{t("downloadCV")}
           </Button>
         </Row>
       </Container>

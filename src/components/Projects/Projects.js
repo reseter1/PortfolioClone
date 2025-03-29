@@ -6,18 +6,21 @@ import project1 from "../../Assets/Projects/project1.png";
 import project2 from "../../Assets/Projects/project2.png";
 import project3 from "../../Assets/Projects/project3.png";
 import Animate from "../Animate";
+import { useLanguage } from "../../contexts/LanguageContext";
 
 function Projects() {
+  const { t } = useLanguage();
+  
   return (
     <Container fluid className="project-section">
       <Particle />
       <Container>
         <Animate animation="slide-down" delay={0.2}>
           <h1 className="project-heading">
-            My Recent <strong className="purple">Works </strong>
+            {t("myRecentWorks")}
           </h1>
           <p style={{ color: "white" }}>
-            Here are a few projects I've worked on recently.
+            {t("someOfMyWorks")}
           </p>
         </Animate>
         <Row style={{ justifyContent: "center", paddingBottom: "10px", marginBottom: "45px" }}>
@@ -26,8 +29,8 @@ function Projects() {
               <ProjectCard
                 imgPath={project1}
                 isBlog={false}
-                title="Express GenAI API"
-                description="This project provides an API server to interact with AI models, supporting text generation and text-to-speech (TTS)."
+                title={t("project1Title")}
+                description={t("project1Desc")}
                 ghLink="https://github.com/reseter1/ExpressGenAIAPI"
                 demoLink="https://genai-reseter.apidog.io/"
               />
@@ -38,8 +41,8 @@ function Projects() {
               <ProjectCard
                 imgPath={project2}
                 isBlog={false}
-                description="PureHealthTT is a simple e-commerce website selling fruits and vegetables built on Laravel with all the necessary features."
-                title="PureHealthTT"
+                description={t("project2Desc")}
+                title={t("project2Title")}
                 ghLink="https://github.com/reseter1/PureHealthTT"
                 demoLink="https://purehealthtt.zoneitshop.com/"
               />
@@ -51,8 +54,8 @@ function Projects() {
               <ProjectCard
                 imgPath={project3}
                 isBlog={false}
-                title="Free Trial ChatGPT Plus"
-                description="Provide ChatGPT Plus account information updated real-time completely free, community purpose."
+                title={t("project3Title")}
+                description={t("project3Desc")}
                 demoLink="https://gptplus-reseter.hackershack.net/login/"
               />
             </Animate>
