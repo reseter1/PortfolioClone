@@ -701,12 +701,38 @@ button:focus {
   opacity: 0.9 !important;
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
 
 .project-card-view:hover {
   transform: scale(1.02) !important;
   overflow: hidden !important;
   box-shadow: 0 4px 4px 5px rgba(129, 72, 144, 0.561) !important;
+}
+
+/* Thêm hiệu ứng viền sáng cho project-card-view */
+.project-card-view::before,
+.project-card-view::after {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(196, 115, 235, 0.5), transparent);
+  z-index: 1;
+  animation: shine-effect 3s infinite;
+  pointer-events: none;
+}
+
+.project-card-view::before {
+  left: -100%;
+  top: 0;
+}
+
+.project-card-view::after {
+  right: -100%;
+  top: 0;
+  animation-delay: 1.5s;
 }
 
 .blog-card {
@@ -849,6 +875,22 @@ button:focus {
   box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
   overflow: hidden !important;
   transition: all 0.4s ease 0s !important;
+  position: relative !important;
+}
+
+/* Thêm hiệu ứng viền sáng cho tech-icons */
+.tech-icons::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(196, 115, 235, 0.7), transparent);
+  background-size: 200% 100%;
+  z-index: -1;
+  animation: glowing-border 2s linear infinite;
+  border-radius: 5px;
 }
 
 @media (max-width: 767px) {
@@ -863,6 +905,11 @@ button:focus {
   border: 2.2px solid rgba(197, 115, 230, 0.883) !important;
 }
 
+.tech-icons:hover::before {
+  animation: glowing-border 1s linear infinite;
+  opacity: 0.8;
+}
+
 .tech-icon-images {
   padding: 20px !important;
   line-height: 1.6 !important;
@@ -872,6 +919,33 @@ button:focus {
   border: none !important;
   color: white !important;
   background-color: transparent !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Thêm hiệu ứng viền sáng cho quote-card-view */
+.quote-card-view::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(196, 115, 235, 0.7), transparent);
+  animation: border-glow 3s linear infinite;
+  z-index: 1;
+}
+
+.quote-card-view::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(196, 115, 235, 0.7), transparent);
+  animation: border-glow 3s linear infinite reverse;
+  z-index: 1;
 }
 
 .about-activity {
@@ -902,6 +976,127 @@ button:focus {
   padding-top: 50px;
   padding-bottom: 50px;
   justify-content: center;
+  position: relative;
+}
+
+/* Hiệu ứng loader cho PDF */
+.pdf-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70vh;
+  margin: 0 auto;
+}
+
+.pdf-loader p {
+  margin-top: 15px;
+  color: #c770f0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(199, 112, 240, 0.4);
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.pdf-loader-animation {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.pdf-loader-animation div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #c770f0;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.pdf-loader-animation div:nth-child(1) {
+  left: 8px;
+  animation: pdf-loader-animation1 0.6s infinite;
+  background: #8a2be2;
+}
+
+.pdf-loader-animation div:nth-child(2) {
+  left: 8px;
+  animation: pdf-loader-animation2 0.6s infinite;
+  background: #9370db;
+}
+
+.pdf-loader-animation div:nth-child(3) {
+  left: 32px;
+  animation: pdf-loader-animation2 0.6s infinite;
+  background: #c770f0;
+}
+
+.pdf-loader-animation div:nth-child(4) {
+  left: 56px;
+  animation: pdf-loader-animation3 0.6s infinite;
+  background: #ba55d3;
+}
+
+@keyframes pdf-loader-animation1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pdf-loader-animation3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes pdf-loader-animation2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+.pdf-hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.pdf-visible {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Thêm hiệu ứng pulse khi PDF hiện ra */
+@keyframes pdf-appear {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .resume-left {
@@ -1049,4 +1244,154 @@ button:focus {
 .home-about-social h1:hover {
   transform: scale(1.05);
   letter-spacing: 1px;
+}
+
+/* Animation Classes */
+.animate-element {
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in forwards;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-in forwards;
+}
+
+.slide-down {
+  animation: slideDown 0.6s ease-in forwards;
+}
+
+.slide-left {
+  animation: slideLeft 0.6s ease-in forwards;
+}
+
+.slide-right {
+  animation: slideRight 0.6s ease-in forwards;
+}
+
+.zoom-in {
+  animation: zoomIn 0.6s ease-in forwards;
+}
+
+.bounce-in {
+  animation: bounceIn 0.6s ease-in forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  70% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Thêm các keyframes cho hiệu ứng viền sáng */
+@keyframes glowing-border {
+  0% {
+    background-position: 0% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes border-glow {
+  0% {
+    left: -100%;
+  }
+
+  50% {
+    left: 100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes shine-effect {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(500%);
+  }
 }
