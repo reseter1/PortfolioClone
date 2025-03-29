@@ -1,21 +1,68 @@
 html {
-  --section-background-color: linear-gradient(
-    to bottom left,
-    rgba(17, 16, 16, 0.582),
-    rgba(12, 8, 24, 0.904)
-  );
+  --section-background-color: linear-gradient(to bottom left,
+      rgba(17, 16, 16, 0.582),
+      rgba(12, 8, 24, 0.904));
 
-  --image-gradient: linear-gradient(
-    to bottom left,
-    rgba(17, 16, 16, 0.678),
-    rgba(12, 10, 22, 0.863)
-  );
+  --image-gradient: linear-gradient(to bottom left,
+      rgba(17, 16, 16, 0.678),
+      rgba(12, 10, 22, 0.863));
 
   --imp-text-color: #c770f0;
+  --font-base: 'Poppins', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-mono: 'Poppins', monospace;
+  --font-logo: 'Orbitron', sans-serif;
+
+  /* Thêm các biến gradient đẹp mới */
+  --primary-gradient: linear-gradient(45deg, #c770f0, #7b68ee, #00bfff, #c770f0);
+  --soft-gradient: linear-gradient(45deg, #c770f0, #8a2be2, #9370db, #c770f0);
+  --vibrant-gradient: linear-gradient(45deg, #ff00ff, #7b68ee, #00bfff, #ff00ff);
+}
+
+body {
+  font-family: var(--font-base) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: font-family 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading) !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-base) !important;
+}
+
+code,
+pre {
+  font-family: var(--font-mono) !important;
 }
 
 .purple {
-  color: var(--imp-text-color) !important;
+  background: var(--primary-gradient);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 4s ease infinite;
+  text-shadow: 0 0 5px rgba(199, 112, 240, 0.3);
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.purple:hover {
+  transform: scale(1.05);
+  letter-spacing: 0.5px;
 }
 
 button:focus {
@@ -36,6 +83,46 @@ button:focus {
   background-image: url(./Assets/pre.svg);
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.loader-text {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #c770f0;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(199, 112, 240, 0.5);
+  animation: glow 1.5s ease-in-out infinite alternate, fadeIn 2s ease;
+}
+
+@media (max-width: 767px) {
+  .loader-text {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #c770f0, 0 0 10px #c770f0;
+  }
+
+  to {
+    text-shadow: 0 0 10px #c770f0, 0 0 20px #c770f0, 0 0 30px #c770f0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 #preloader-none {
@@ -146,10 +233,12 @@ button:focus {
     font-size: 1.4rem !important;
     background-color: #181a27 !important;
   }
+
   .navbar-nav .nav-item a::after {
     display: none !important;
   }
 }
+
 .navbar-brand {
   color: rgb(250, 250, 250) !important;
 }
@@ -157,6 +246,89 @@ button:focus {
 .logo {
   height: 2em !important;
   width: 2em !important;
+}
+
+.reseter-text {
+  font-family: var(--font-logo);
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-left: 12px;
+  background: var(--vibrant-gradient);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease infinite;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  text-shadow: 0 0 5px rgba(199, 112, 240, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.reseter-text:hover {
+  transform: scale(1.05);
+  letter-spacing: 3px;
+}
+
+.reseter-text::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(45deg, #c770f0, #7b68ee);
+  transition: width 0.3s ease;
+}
+
+.reseter-text:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .reseter-text {
+    font-size: 1.3rem;
+    margin-left: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Thêm một hiệu ứng gradient animation mới */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 50% 100%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 50% 0%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .navbar-nav .nav-link {
@@ -181,10 +353,11 @@ button:focus {
 }
 
 .navbar-nav .nav-item a {
-  font-weight: 400;
+  font-weight: 500;
   transition: all 0.3s ease-out 0s;
   position: relative;
   z-index: 1;
+  letter-spacing: 0.3px;
 }
 
 .navbar-nav .nav-item a::after {
@@ -209,10 +382,14 @@ button:focus {
 /* Home section */
 /* --------- */
 .wave {
-  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
-  animation-duration: 2.1s; /* Change to speed up or slow down */
-  animation-iteration-count: infinite; /* Never stop waving :) */
-  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  animation-name: wave-animation;
+  /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.1s;
+  /* Change to speed up or slow down */
+  animation-iteration-count: infinite;
+  /* Never stop waving :) */
+  transform-origin: 70% 70%;
+  /* Pivot around the bottom-left palm */
   display: inline-block;
 }
 
@@ -220,28 +397,38 @@ button:focus {
   0% {
     transform: rotate(0deg);
   }
+
   10% {
     transform: rotate(14deg);
-  } /* The following five values can be played with to make the waving more or less extreme */
+  }
+
+  /* The following five values can be played with to make the waving more or less extreme */
   20% {
     transform: rotate(-8deg);
   }
+
   30% {
     transform: rotate(14deg);
   }
+
   40% {
     transform: rotate(-4deg);
   }
+
   50% {
     transform: rotate(10deg);
   }
+
   60% {
     transform: rotate(0deg);
-  } /* Reset for the last half to pause */
+  }
+
+  /* Reset for the last half to pause */
   100% {
     transform: rotate(0deg);
   }
 }
+
 #tsparticles {
   position: fixed !important;
   background-repeat: no-repeat !important;
@@ -273,15 +460,32 @@ button:focus {
 .heading {
   font-size: 2.4em !important;
   padding-left: 50px !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .heading-name {
   font-size: 2.5em !important;
   padding-left: 45px !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .main-name {
-  color: #cd5ff8;
+  background: var(--vibrant-gradient);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease infinite;
+  text-shadow: 0 0 5px rgba(199, 112, 240, 0.3);
+  transition: all 0.3s ease;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.main-name:hover {
+  transform: scale(1.05);
+  letter-spacing: 2px;
 }
 
 .Typewriter__wrapper {
@@ -289,6 +493,7 @@ button:focus {
   color: #be6adf !important;
   font-weight: 600 !important;
 }
+
 .Typewriter__cursor {
   font-size: 2.4em !important;
   color: #b562d6 !important;
@@ -300,6 +505,7 @@ button:focus {
     font-weight: 500 !important;
     position: absolute !important;
   }
+
   .Typewriter__cursor {
     display: none !important;
   }
@@ -314,6 +520,8 @@ button:focus {
   .myAvtar {
     padding-top: 2em !important;
     padding-bottom: 2em !important;
+    display: flex !important;
+    justify-content: center !important;
   }
 }
 
@@ -405,8 +613,9 @@ button:focus {
   background-color: rgb(10, 4, 22);
   bottom: 0 !important;
   padding-top: 10px !important;
-  padding-bottom: 8px !important ;
+  padding-bottom: 8px !important;
 }
+
 .footer-copywright {
   text-align: center !important;
 }
@@ -424,6 +633,12 @@ button:focus {
   .footer-body {
     text-align: center !important;
   }
+
+  .footer h3 {
+    font-size: 0.8em !important;
+    margin-top: 0.3em !important;
+    margin-bottom: 0.3em !important;
+  }
 }
 
 .footer h3 {
@@ -432,6 +647,25 @@ button:focus {
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
 }
+
+/* Áp dụng hiệu ứng gradient cho h3 trong footer */
+.footer h3 {
+  background: var(--soft-gradient);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease infinite;
+  text-shadow: 0 0 5px rgba(199, 112, 240, 0.3);
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.footer h3:hover {
+  transform: scale(1.05);
+  letter-spacing: 1px;
+}
+
 .footer-icons {
   margin-top: 0.5em !important;
   margin-bottom: 0.5em !important;
@@ -441,6 +675,7 @@ button:focus {
 .blockquote-footer {
   color: #a588c0 !important;
 }
+
 /* --------- */
 /* Projects */
 /* --------- */
@@ -467,6 +702,7 @@ button:focus {
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
 }
+
 .project-card-view:hover {
   transform: scale(1.02) !important;
   overflow: hidden !important;
@@ -527,15 +763,65 @@ button:focus {
   background-color: #6d20c5d7 !important;
   border-color: #6d20c5d7 !important;
 }
+
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;
 }
+
 .project-heading {
-  color: white !important;
+  color: white;
   font-size: 2.3em !important;
   font-weight: 500 !important;
   padding-top: 10px !important;
+}
+
+/* Áp dụng hiệu ứng gradient cho các heading quan trọng */
+.project-heading,
+.about-section h1,
+.resume-section h1 {
+  background: var(--primary-gradient);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-animation 4s ease infinite;
+  text-shadow: 0 0 5px rgba(199, 112, 240, 0.3);
+  transition: all 0.3s ease;
+  font-weight: 700;
+}
+
+.project-heading strong,
+.about-section h1 strong,
+.resume-section h1 strong {
+  font-weight: 800;
+  letter-spacing: 0.8px;
+}
+
+.project-heading:hover,
+.about-section h1:hover,
+.resume-section h1:hover {
+  transform: scale(1.03);
+  letter-spacing: 1px;
+}
+
+/* Hiệu ứng cho tiêu đề thẻ card */
+.project-card-view h3,
+.blog-card-view h3,
+.quote-card-view h3 {
+  background: var(--soft-gradient);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 5s ease infinite;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.project-card-view h3:hover,
+.blog-card-view h3:hover,
+.quote-card-view h3:hover {
+  transform: scale(1.05);
+  letter-spacing: 0.5px;
 }
 
 /* --------- */
@@ -576,6 +862,7 @@ button:focus {
   overflow: hidden !important;
   border: 2.2px solid rgba(197, 115, 230, 0.883) !important;
 }
+
 .tech-icon-images {
   padding: 20px !important;
   line-height: 1.6 !important;
@@ -598,6 +885,7 @@ button:focus {
     padding-top: 0 !important;
   }
 }
+
 /* --------- */
 /* Resume */
 /* --------- */
@@ -635,6 +923,7 @@ button:focus {
     padding-left: 15px !important;
   }
 }
+
 .resume .resume-title {
   font-size: 2em;
   font-weight: 700;
@@ -711,10 +1000,12 @@ button:focus {
   animation-fill-mode: forwards;
   animation-duration: 0.85s;
 }
+
 @keyframes likeAnimation {
   0% {
     transform: scale(1.5);
   }
+
   100% {
     transform: scale(1);
   }
@@ -738,6 +1029,24 @@ button:focus {
   background-color: #a24dd386 !important;
   border-color: #a24dd386 !important;
 }
+
 .fork-btn-inner::after {
   display: none !important;
+}
+
+.home-about-description h1 span,
+.home-about-social h1 {
+  background: var(--vibrant-gradient);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 6s ease infinite;
+  text-shadow: 0 0 5px rgba(199, 112, 240, 0.3);
+  transition: all 0.3s ease;
+}
+
+.home-about-description h1 span:hover,
+.home-about-social h1:hover {
+  transform: scale(1.05);
+  letter-spacing: 1px;
 }
