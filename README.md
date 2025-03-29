@@ -40,6 +40,3 @@ Dự án này được phát triển dựa trên mã nguồn gốc từ [Portfol
 
 ### Yêu cầu
 - Node.js và npm
-
-### Các bước cài đặt
-1. Clone dự án về máy của bạn
