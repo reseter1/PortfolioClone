@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
@@ -19,19 +19,39 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 
 function App() {
   const [load, upadateLoad] = useState(true);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       upadateLoad(false);
+
+      if (audioRef.current) {
+        if (audioRef.current.paused) {
+          audioRef.current.play().catch(err => {
+            console.error("Error playing audio after preload:", err);
+          });
+        } else {
+          console.log("Audio is already playing, no need to restart");
+        }
+      } else {
+        console.warn("Audio reference not available when preloader finished");
+      }
     }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
 
+  const getAudioRef = (ref) => {
+    console.log("Received audio reference in App:", ref);
+    audioRef.current = ref;
+
+    window.bgAudioElement = ref;
+  };
+
   return (
     <LanguageProvider>
       <Router>
-        <Preloader load={load} />
+        <Preloader load={load} getAudioRef={getAudioRef} />
         <div className="App" id={load ? "no-scroll" : "scroll"}>
           <Navbar />
           <ScrollToTop />

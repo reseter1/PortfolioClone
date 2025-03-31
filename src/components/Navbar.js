@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
@@ -13,15 +13,35 @@ import {
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
 } from "react-icons/ai";
-import { MdLanguage } from "react-icons/md";
+import { MdLanguage, MdMusicNote, MdMusicOff } from "react-icons/md";
 import { CgFileDocument } from "react-icons/cg";
 import { useLanguage } from "../contexts/LanguageContext";
 
 function NavBar() {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const audioRef = useRef(null);
   const { t, toggleLanguage, language } = useLanguage();
+
+  const bgAudioRef = useRef(null);
+
+  useEffect(() => {
+    const bgAudio = window.bgAudioElement;
+    if (bgAudio) {
+      bgAudioRef.current = bgAudio;
+      setIsMusicPlaying(!bgAudio.paused);
+
+      const updatePlayingState = () => setIsMusicPlaying(!bgAudio.paused);
+      bgAudio.addEventListener('play', updatePlayingState);
+      bgAudio.addEventListener('pause', updatePlayingState);
+
+      return () => {
+        bgAudio.removeEventListener('play', updatePlayingState);
+        bgAudio.removeEventListener('pause', updatePlayingState);
+      };
+    }
+  }, []);
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -37,6 +57,34 @@ function NavBar() {
       audioRef.current.play().catch(err => {
         console.log("Error playing audio:", err);
       });
+    }
+  };
+
+  const toggleBackgroundMusic = () => {
+    playSound();
+
+    if (bgAudioRef.current) {
+      if (bgAudioRef.current.paused) {
+        bgAudioRef.current.play().then(() => {
+          setIsMusicPlaying(true);
+        }).catch(err => {
+          console.error("Error playing background music:", err);
+        });
+      } else {
+        bgAudioRef.current.pause();
+        setIsMusicPlaying(false);
+      }
+    } else if (window.bgAudioElement) {
+      bgAudioRef.current = window.bgAudioElement;
+      if (bgAudioRef.current.paused) {
+        bgAudioRef.current.play().then(() => {
+          setIsMusicPlaying(true);
+        }).catch(err => {
+          console.error("Error playing background music:", err);
+        });
+      }
+    } else {
+      console.warn("Background audio reference not available");
     }
   };
 
@@ -136,7 +184,62 @@ function NavBar() {
                 </Nav.Link>
               </Nav.Item>
 
-              <Nav.Item className="fork-btn">
+              {/* Container cho các nút trong mobile view */}
+              <div className="d-md-none fork-btn-container">
+                <Nav.Item className="fork-btn">
+                  <Button
+                    className="fork-btn-inner music-btn"
+                    onClick={toggleBackgroundMusic}
+                    title={isMusicPlaying ? "Tắt nhạc nền" : "Bật nhạc nền"}
+                  >
+                    {isMusicPlaying ?
+                      <MdMusicNote style={{ fontSize: "1.2em" }} /> :
+                      <MdMusicOff style={{ fontSize: "1.2em" }} />
+                    }
+                  </Button>
+                </Nav.Item>
+
+                <Nav.Item className="fork-btn">
+                  <Button
+                    href="https://github.com/reseter1"
+                    target="_blank"
+                    className="fork-btn-inner"
+                    onClick={playSound}
+                  >
+                    <CgGitFork style={{ fontSize: "1.2em" }} />{" "}
+                    <AiFillStar style={{ fontSize: "1.1em" }} />
+                  </Button>
+                </Nav.Item>
+
+                <Nav.Item className="fork-btn">
+                  <Button
+                    className="fork-btn-inner language-btn"
+                    onClick={() => {
+                      playSound();
+                      toggleLanguage();
+                    }}
+                  >
+                    <MdLanguage style={{ fontSize: "1.2em" }} />{" "}
+                    <span>{language === "en" ? "VI" : "EN"}</span>
+                  </Button>
+                </Nav.Item>
+              </div>
+
+              {/* Hiển thị các nút trên màn hình lớn */}
+              <Nav.Item className="fork-btn d-none d-md-block">
+                <Button
+                  className="fork-btn-inner music-btn"
+                  onClick={toggleBackgroundMusic}
+                  title={isMusicPlaying ? "Tắt nhạc nền" : "Bật nhạc nền"}
+                >
+                  {isMusicPlaying ?
+                    <MdMusicNote style={{ fontSize: "1.2em" }} /> :
+                    <MdMusicOff style={{ fontSize: "1.2em" }} />
+                  }
+                </Button>
+              </Nav.Item>
+
+              <Nav.Item className="fork-btn d-none d-md-block">
                 <Button
                   href="https://github.com/reseter1"
                   target="_blank"
@@ -148,7 +251,7 @@ function NavBar() {
                 </Button>
               </Nav.Item>
 
-              <Nav.Item className="fork-btn">
+              <Nav.Item className="fork-btn d-none d-md-block">
                 <Button
                   className="fork-btn-inner language-btn"
                   onClick={() => {
