@@ -34,5 +34,5 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           source: "build/*"
-          target: "~/workspace/PortfolioPage"
+          target: "/workspace/PortfolioPage"
           overwrite: true
