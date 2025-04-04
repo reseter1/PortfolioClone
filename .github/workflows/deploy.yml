@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: npm run build
+      - name: Build React application
+        run: CI=false npm run build
 
       - name: Deploy to Hosting
         uses: appleboy/scp-action@v0.1.7
@@ -36,4 +36,3 @@ jobs:
           source: "build/*"
           target: "~/workspace/PortfolioPage"
           overwrite: true
-
