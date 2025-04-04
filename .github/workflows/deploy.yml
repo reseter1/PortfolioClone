@@ -28,12 +28,12 @@ jobs:
 
       - name: Deploy to Hosting
         uses: appleboy/scp-action@v0.1.7
-        working-directory: ./build
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: "."
+          source: "build/*"
           target: "~/public_html"
+          strip_components: 1
           overwrite: true
