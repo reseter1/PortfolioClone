@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import homeLogo from "../../Assets/home-main.svg";
+import homeLogo2 from "../../Assets/home-main2.svg";
 import Particle from "../Particle";
 import Home2 from "./Home2";
 import Type from "./Type";
@@ -42,12 +43,15 @@ function Home() {
 
             <Col md={5} style={{ paddingBottom: 20 }}>
               <Animate animation="zoom-in" delay={0.5}>
-                <img
-                  src={homeLogo}
-                  alt="home pic"
-                  className="img-fluid"
-                  style={{ maxHeight: "450px" }}
-                />
+                <picture>
+                  <source media="(max-width: 768px)" srcSet={homeLogo2} />
+                  <img
+                    src={homeLogo}
+                    alt="home pic"
+                    className="img-fluid"
+                    style={{ maxHeight: "450px" }}
+                  />
+                </picture>
               </Animate>
             </Col>
           </Row>
