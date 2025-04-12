@@ -1,10 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 function Pre(props) {
   const { load, getAudioRef } = props;
   const audioRef = useRef(null);
-  const [audioLoaded, setAudioLoaded] = useState(false);
-  const [showPlayButton, setShowPlayButton] = useState(false);
 
   useEffect(() => {
     if (load) {
@@ -25,7 +23,6 @@ function Pre(props) {
           audio.src = audioUrl;
           audio.addEventListener('canplaythrough', () => {
             console.log("Audio can play through without buffering");
-            setAudioLoaded(true);
           });
 
           audioRef.current = audio;
@@ -39,7 +36,6 @@ function Pre(props) {
             console.log("Audio started playing in Pre component");
           } catch (playError) {
             console.error("Error auto-playing audio in Pre:", playError);
-            setShowPlayButton(true);
           }
         } catch (error) {
           console.error("Error loading audio:", error);
@@ -50,36 +46,9 @@ function Pre(props) {
     }
   }, [load, getAudioRef]);
 
-  const handlePlayClick = () => {
-    if (audioRef.current) {
-      audioRef.current.play().catch(error => {
-        console.error("Error playing audio on button click:", error);
-      });
-    }
-  };
-
   return (
     <div id={load ? "preloader" : "preloader-none"}>
       <div className="loader-text">Reseter Portfolio...</div>
-      {showPlayButton && audioLoaded && (
-        <button
-          onClick={handlePlayClick}
-          style={{
-            position: 'absolute',
-            bottom: '20px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            padding: '10px 20px',
-            background: '#623686',
-            color: 'white',
-            border: 'none',
-            borderRadius: '5px',
-            cursor: 'pointer'
-          }}
-        >
-          Phát nhạc nền
-        </button>
-      )}
     </div>
   );
 }
