@@ -444,7 +444,7 @@ button:focus {
 .home-section {
   position: relative;
   z-index: -1;
-  background-image: var(--image-gradient), url(./Assets/home-bg.jpg);
+  /* background-image: var(--image-gradient), url(./Assets/home-bg.jpg); */
   background-position: top center;
   background-repeat: no-repeat;
   padding-bottom: 30px !important;
@@ -1515,5 +1515,297 @@ button:focus {
 @media (max-width: 767px) {
   .music-btn {
     width: 72px;
+  }
+}
+
+.home-skill-section {
+  position: relative;
+  padding-bottom: 70px !important;
+  padding-top: 70px !important;
+  background-image: var(--section-background-color) !important;
+  color: white !important;
+}
+
+.skill-card {
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.skill-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px 0 rgba(100, 50, 200, 0.3);
+  border: 1px solid rgba(100, 50, 200, 0.3);
+}
+
+.skill-icon {
+  font-size: 50px;
+  color: var(--imp-text-color);
+  margin-bottom: 15px;
+}
+
+.skill-title {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.skill-text {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+.tech-icons {
+  padding: 15px !important;
+}
+
+.home-feature-section {
+  position: relative;
+  padding-bottom: 70px !important;
+  padding-top: 30px !important;
+  background-image: var(--section-background-color) !important;
+  color: white !important;
+}
+
+.featured-project-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  margin-bottom: 30px;
+}
+
+.featured-project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 32px 0 rgba(100, 50, 200, 0.3);
+  border: 1px solid rgba(100, 50, 200, 0.3);
+}
+
+.featured-project-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+
+.featured-project-content {
+  padding: 20px;
+}
+
+.featured-project-title {
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--imp-text-color);
+}
+
+.featured-project-description {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  opacity: 0.8;
+  height: 60px;
+  overflow: hidden;
+}
+
+.featured-project-links {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.featured-project-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: var(--imp-text-color);
+  color: #fff !important;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.featured-project-btn:hover {
+  background-color: #823eff;
+  transform: scale(1.05);
+}
+
+.view-all-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: transparent;
+  color: var(--imp-text-color) !important;
+  border: 2px solid var(--imp-text-color);
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.view-all-btn:hover {
+  background-color: var(--imp-text-color);
+  color: #fff !important;
+}
+
+.home-timeline-section {
+  position: relative;
+  padding-bottom: 70px !important;
+  padding-top: 30px !important;
+  background-image: none !important;
+  color: white !important;
+}
+
+.timeline-container {
+  padding: 20px 0;
+  width: 100%;
+}
+
+.timeline {
+  position: relative;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: var(--imp-text-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+  opacity: 0.7;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 10px 40px;
+  box-sizing: border-box;
+}
+
+.timeline-item.left {
+  left: 0;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-content {
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 15px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 32px 0 rgba(100, 50, 200, 0.25);
+  border: 1px solid rgba(199, 112, 240, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.timeline-item.left .timeline-content::after,
+.timeline-item.right .timeline-content::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--imp-text-color);
+  border-radius: 50%;
+  top: 25px;
+  z-index: 1;
+}
+
+.timeline-item.left .timeline-content::after {
+  right: -50px;
+}
+
+.timeline-item.right .timeline-content::after {
+  left: -50px;
+}
+
+.timeline-date {
+  display: inline-block;
+  padding: 5px 15px;
+  background-color: var(--imp-text-color);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85em;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.timeline-title {
+  color: var(--imp-text-color);
+  font-size: 1.3em;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.timeline-company {
+  font-size: 1em;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #dac5f0;
+}
+
+.timeline-description {
+  font-size: 0.9em;
+  opacity: 0.9;
+  line-height: 1.6;
+  color: #f0f0f0;
+}
+
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 43px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 20px;
+  }
+
+  .timeline-item.right {
+    left: 0;
+  }
+
+  .timeline-item.left .timeline-content::after,
+  .timeline-item.right .timeline-content::after {
+    left: -40px;
+    top: 20px;
+  }
+
+  .timeline-content::after {
+    width: 16px;
+    height: 16px;
+    left: -38px !important;
+  }
+
+  .timeline-content {
+    margin-bottom: 20px;
   }
 }

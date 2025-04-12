@@ -5,12 +5,13 @@ import Particle from "../Particle";
 import project1 from "../../Assets/Projects/project1.png";
 import project2 from "../../Assets/Projects/project2.png";
 import project3 from "../../Assets/Projects/project3.png";
+import project4 from "../../Assets/Projects/project4.png";
 import Animate from "../Animate";
 import { useLanguage } from "../../contexts/LanguageContext";
 
 function Projects() {
   const { t } = useLanguage();
-  
+
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -57,6 +58,19 @@ function Projects() {
                 title={t("project3Title")}
                 description={t("project3Desc")}
                 demoLink="https://gptplus-reseter.hackershack.net/login/"
+              />
+            </Animate>
+          </Col>
+
+          <Col md={4} className="project-card">
+            <Animate animation="slide-up" delay={0.9}>
+              <ProjectCard
+                imgPath={project4}
+                isBlog={false}
+                title={t("project4Title")}
+                description={t("project4Desc")}
+                ghLink="https://github.com/reseter1/ReseterTTSChromeExtension"
+                demoLink="https://github.com/reseter1/ReseterTTSChromeExtension"
               />
             </Animate>
           </Col>

@@ -12,16 +12,14 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 function ResumeNew() {
   const { t } = useLanguage();
   const [width, setWidth] = useState(1200);
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber] = useState(1);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setWidth(window.innerWidth);
   }, []);
 
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
+  function onDocumentLoadSuccess() {
     setLoading(false);
   }
 

@@ -57,6 +57,9 @@ export const locales = {
     // Project 3
     project3Title: "Free Trial ChatGPT Plus",
     project3Desc: "Provide ChatGPT Plus account information updated real-time completely free, community purpose.",
+    // Project 4
+    project4Title: "Reseter TTS Chrome Extension",
+    project4Desc: "A Chrome extension for converting text to speech, developed by Reseter. Supports multiple languages and voice options.",
 
     // Resume
     myResume: "My Resume",
@@ -130,6 +133,9 @@ export const locales = {
     // Project 3
     project3Title: "Dùng thử ChatGPT Plus",
     project3Desc: "Cung cấp thông tin tài khoản ChatGPT Plus được cập nhật theo thời gian thực hoàn toàn miễn phí, phục vụ cộng đồng.",
+    // Project 4
+    project4Title: "Reseter TTS Chrome Extension",
+    project4Desc: "Một phần mềm mở rộng trình duyệt Chrome cho phép chuyển đổi văn bản thành giọng nói, phát triển bởi Reseter. Hỗ trợ nhiều ngôn ngữ và tùy chọn giọng.",
 
     // Resume
     myResume: "CV của tôi",

@@ -1,12 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 
 function Pre(props) {
+  const { load, getAudioRef } = props;
   const audioRef = useRef(null);
   const [audioLoaded, setAudioLoaded] = useState(false);
   const [showPlayButton, setShowPlayButton] = useState(false);
 
   useEffect(() => {
-    if (props.load) {
+    if (load) {
       const audio = new Audio();
       audio.preload = "auto";
 
@@ -29,8 +30,8 @@ function Pre(props) {
 
           audioRef.current = audio;
 
-          if (props.getAudioRef) {
-            props.getAudioRef(audio);
+          if (getAudioRef) {
+            getAudioRef(audio);
           }
 
           try {
@@ -47,7 +48,7 @@ function Pre(props) {
 
       playAudioWithRange("https://purehealthtt.alwaysdata.net/api/song-stream");
     }
-  }, [props.load, props.getAudioRef]);
+  }, [load, getAudioRef]);
 
   const handlePlayClick = () => {
     if (audioRef.current) {
@@ -58,7 +59,7 @@ function Pre(props) {
   };
 
   return (
-    <div id={props.load ? "preloader" : "preloader-none"}>
+    <div id={load ? "preloader" : "preloader-none"}>
       <div className="loader-text">Reseter Portfolio...</div>
       {showPlayButton && audioLoaded && (
         <button
