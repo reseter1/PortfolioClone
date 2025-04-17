@@ -59,7 +59,10 @@ export const locales = {
     project3Desc: "Provide ChatGPT Plus account information updated real-time completely free, community purpose.",
     // Project 4
     project4Title: "Reseter TTS Chrome Extension",
-    project4Desc: "A Chrome extension for converting text to speech, developed by Reseter. Supports multiple languages and voice options.",
+    project4Desc: "A Chrome extension for converting text to speech.",
+    // Project 5
+    project5Title: "MFC",
+    project5Desc: "A simple AI chatbot platform built on ASP.NET Core, with a clean and modern design.",
 
     // Resume
     myResume: "My Resume",
@@ -135,7 +138,11 @@ export const locales = {
     project3Desc: "Cung cấp thông tin tài khoản ChatGPT Plus được cập nhật theo thời gian thực hoàn toàn miễn phí, phục vụ cộng đồng.",
     // Project 4
     project4Title: "Reseter TTS Chrome Extension",
-    project4Desc: "Một phần mềm mở rộng trình duyệt Chrome cho phép chuyển đổi văn bản thành giọng nói, phát triển bởi Reseter. Hỗ trợ nhiều ngôn ngữ và tùy chọn giọng.",
+    project4Desc: "Một phần mềm mở rộng trình duyệt Chrome cho phép chuyển đổi văn bản thành giọng nói.",
+
+    // Project 5
+    project5Title: "MFC",
+    project5Desc: "MFC là một AI chatbot đơn giản được xây dựng trên ASP.NET Core, với thiết kế sạch sẽ và hiện đại.",
 
     // Resume
     myResume: "CV của tôi",

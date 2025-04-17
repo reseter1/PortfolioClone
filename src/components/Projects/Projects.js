@@ -6,6 +6,7 @@ import project1 from "../../Assets/Projects/project1.png";
 import project2 from "../../Assets/Projects/project2.png";
 import project3 from "../../Assets/Projects/project3.png";
 import project4 from "../../Assets/Projects/project4.png";
+import project5 from "../../Assets/Projects/project5.png";
 import Animate from "../Animate";
 import { useLanguage } from "../../contexts/LanguageContext";
 
@@ -71,6 +72,19 @@ function Projects() {
                 description={t("project4Desc")}
                 ghLink="https://github.com/reseter1/ReseterTTSChromeExtension"
                 demoLink="https://github.com/reseter1/ReseterTTSChromeExtension"
+              />
+            </Animate>
+          </Col>
+
+          <Col md={4} className="project-card">
+            <Animate animation="slide-up" delay={0.9}>
+              <ProjectCard
+                imgPath={project5}
+                isBlog={false}
+                title={t("project5Title")}
+                description={t("project5Desc")}
+                ghLink="https://github.com/reseter1/MFC"
+                demoLink="https://mfc-client.hackquest.com/"
               />
             </Animate>
           </Col>
