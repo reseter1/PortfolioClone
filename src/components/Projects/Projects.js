@@ -52,18 +52,6 @@ function Projects() {
           </Col>
 
           <Col md={4} className="project-card">
-            <Animate animation="slide-up" delay={0.7}>
-              <ProjectCard
-                imgPath={project3}
-                isBlog={false}
-                title={t("project3Title")}
-                description={t("project3Desc")}
-                demoLink="https://gptplus-reseter.hackershack.net/login/"
-              />
-            </Animate>
-          </Col>
-
-          <Col md={4} className="project-card">
             <Animate animation="slide-up" delay={0.9}>
               <ProjectCard
                 imgPath={project4}
@@ -84,7 +72,7 @@ function Projects() {
                 title={t("project5Title")}
                 description={t("project5Desc")}
                 ghLink="https://github.com/reseter1/MFC"
-                demoLink="https://mfc-client.hackquest.com/"
+                demoLink="https://mfc.reseter.space/"
               />
             </Animate>
           </Col>
