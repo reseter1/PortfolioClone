@@ -138,7 +138,7 @@ export const locales = {
     project3Desc: "Cung cấp thông tin tài khoản ChatGPT Plus được cập nhật theo thời gian thực hoàn toàn miễn phí, phục vụ cộng đồng.",
     // Project 4
     project4Title: "Reseter TTS",
-    project4Desc: "Một phần mềm mở rộng trình duyệt Chrome cho phép chuyển đổi văn bản thành giọng nói.",
+    project4Desc: "Một phần mềm mở rộng trình duyệt Chrome cho phép chuyển đổi văn bản thành giọng nói, đơn giản, tiện lợi, dễ sử dụng.",
 
     // Project 5
     project5Title: "MFC",
