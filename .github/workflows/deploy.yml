@@ -1,4 +1,4 @@
-name: Deploy to Production
+name: Deploy to VPS
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 20.19.0
           cache: 'npm'
 
       - name: Install dependencies
@@ -26,7 +26,7 @@ jobs:
       - name: Build React application
         run: CI=false npm run build
 
-      - name: Deploy to Hosting
+      - name: Copy files to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -34,6 +34,18 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           source: "build/*"
-          target: "~/public_html"
+          target: "/var/www/Portfolio"
           strip_components: 1
           overwrite: true
+
+      - name: Apache reload permission
+        run: |
+          sudo chown -R www-data:www-data /var/www/Portfolio
+          sudo chmod -R 755 /var/www/Portfolio
+
+      - name: Apache restart
+        run: sudo systemctl restart apache2
+
+      - name: Finish
+        run: |
+          echo "Deployment completed successfully"
