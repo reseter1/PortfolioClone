@@ -64,6 +64,9 @@ export const locales = {
     project5Title: "MFC",
     project5Desc: "A simple AI chatbot platform built on ASP.NET Core, with a clean and modern design.",
 
+    project6Title: "GPT Share",
+    project6Desc: "A simple platform for sharing ChatGPT Plus accounts, with a clean and modern design.",
+
     // Resume
     myResume: "My Resume",
     educationTitle: "Education",
@@ -143,6 +146,10 @@ export const locales = {
     // Project 5
     project5Title: "MFC",
     project5Desc: "MFC là một AI chatbot đơn giản được xây dựng trên ASP.NET Core, với thiết kế sạch sẽ và hiện đại.",
+
+    // Project 6
+    project6Title: "GPT Share",
+    project6Desc: "GPT Share là một nền tảng đơn giản chia sẻ tài khoản ChatGPT Plus, với thiết kế sạch sẽ và hiện đại.",
 
     // Resume
     myResume: "CV của tôi",
